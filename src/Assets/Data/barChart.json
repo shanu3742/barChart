@@ -1,0 +1,54 @@
+[
+	{
+		"Label": "A",
+		"Value": 25	
+	},
+	{
+		"Label" : "B",
+		"Value": 10
+	},
+	{
+		"Label" : "C",
+		"Value": 50
+	},
+	{
+		"Label" : "D",
+		"Value": 34
+	},
+	{
+		"Label" : "E",
+		"Value" : 40
+	},
+	{
+		"Label" : "F",
+		"Value" : 21
+	},
+	{
+		"Label" : "G",
+		"Value" : 57
+	},
+	{
+		"Label" : "H",
+		"Value" : 38
+	},
+	{
+		"Label" : "I",
+		"Value" : 17
+	},
+	{
+		"Label" : "J",
+		"Value" : 5
+	},
+	{
+		"Label" : "K",
+		"Value" : 23
+	},
+	{
+		"Label" : "L",
+		"Value" : 60
+	},
+	{
+		"Label" : "M",
+		"Value" : 29
+	}
+]

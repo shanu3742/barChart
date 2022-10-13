@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 import barChartData from './Assets/Data/barChart.json';
 import BarChart from './component/barChart.js/BarChart';
@@ -6,7 +6,12 @@ import BarChart from './component/barChart.js/BarChart';
 function App() {
   return (
     <div>
-      <BarChart objectData={barChartData} />
+      <BarChart
+        objectData={barChartData}
+        titlePosition="bottom"
+        titleColor="#f6d69b"
+        marginTop={25}
+      />
     </div>
   );
 }

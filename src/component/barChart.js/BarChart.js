@@ -1,11 +1,29 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import * as d3 from 'd3';
-import { convertObjectIntoArray } from '../../setting';
+import pickColor, { convertObjectIntoArray } from '../../setting';
 
-const BarChart = ({ objectData }) => {
+/**
+ *
+ * @param {object} objectData **data used to create bar chart**
+ *  @param {string} titlePosition **position text title it's may be at top or bottom `by default it's top`**
+ *  @param {string} titleColor **color of the title text**
+ * @param {string} marginTop  **margin of the text from top**
+ * @returns
+ */
+const BarChart = ({
+  objectData,
+  titlePosition = 'top',
+  titleColor = 'red',
+  marginTop = 20,
+}) => {
+  if (titlePosition === 'top') {
+    titlePosition = 'column';
+  } else {
+    titlePosition = 'column-reverse';
+  }
   const [value, labelDta] = convertObjectIntoArray(objectData);
-  const [data, setData] = useState(value);
-  const [label, setlLabel] = useState(labelDta);
+  const data = value;
+  const label = labelDta;
   const svgRef = useRef(null);
 
   React.useEffect(() => {
@@ -34,6 +52,7 @@ const BarChart = ({ objectData }) => {
     const yAxis = d3.axisLeft(yScale).ticks(5);
 
     svg.append('g').call(xAxis).attr('transform', `translate(0,${height})`);
+
     svg.append('g').call(yAxis);
 
     svg
@@ -44,8 +63,12 @@ const BarChart = ({ objectData }) => {
       .attr('y', yScale)
       .attr('width', xScale.bandwidth())
       .attr('height', (val) => height - yScale(val))
-      .attr('stroke', 'red')
-      .attr('fill', '#eedab4');
+      .attr('stroke', (e, i) =>
+        pickColor(label[i] === undefined ? 'thilkjs ' : label[i], 60)
+      )
+      .attr('fill', (e, i) =>
+        pickColor(label[i] === undefined ? 'thilkjs ' : label[i], 90)
+      );
 
     svg
       .selectAll('.text')
@@ -53,10 +76,26 @@ const BarChart = ({ objectData }) => {
       .join('text')
       .attr('x', (v, i) => xScale(i))
       .attr('y', (v, i) => yScaleforText(data[i]))
-      .text((d, i) => d);
+      .text((d, i) => d)
+      .attr('fill', (e, i) =>
+        pickColor(label[i] === undefined ? 'thilkjs ' : label[i], 40)
+      );
   }, [data, label]);
+  const barChartTitle = {
+    color: titleColor,
+    marginTop: `${marginTop}px`,
+  };
+
+  const barContainer = {
+    display: 'flex',
+    flexDirection: titlePosition,
+    alignItems: 'center',
+  };
   return (
-    <div>
+    <div style={barContainer}>
+      <div style={barChartTitle}>
+        <b>Bar Chart</b>
+      </div>
       <svg ref={svgRef}></svg>
     </div>
   );

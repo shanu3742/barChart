@@ -1,6 +1,41 @@
-# Getting Started with Create React App
+# Bar chart applictaion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## step-1
+
+- ### clone the application  [barchart](https://github.com/shanu3742/barChart.git)
+
+>git clone https://github.com/shanu3742/barChart.git
+
+## step-2
+
+- cd barchart
+
+## step-3
+
+-npm install
+
+## step-4
+
+>to run the application
+
+- npm start
+
+>### data  exapmle
+
+```javascript
+
+
+[
+	{
+		"Label": "A",
+		"Value": 25	
+	},
+	{
+		"Label" : "B",
+		"Value": 10
+	},
+]
+```
 
 ## Available Scripts
 
